@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Admin panel
+{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Welcome to the Admin panel, {{ session['username'] }}!</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <form>
+          <div class="mb-3">
+            <label for="username" class="form-label"><b>Username:</b></label>
+            <input type="text" class="form-control" id="username" name="user" placeholder="Enter Username" required>
+          </div>
+          <div class="mb-3">
+            <label for="reason" class="form-label"><b>Reason:</b></label>
+            <input type="text" class="form-control" id="reason" name="reason" placeholder="Enter Reason">
+          </div>
+          <div class="mb-3">
+            <label for="warning_type" class="form-label"><b>Warning Type (For warning only):</b></label>
+            <input type="number" class="form-control" id="warning_type" name="warning_type" min="1" max="4">
+          </div>
+          <hr>
+          <div class="mb-3">
+            <label><b>Action:</b></label>
+            <form class="form-check" action="#" method="post">
+              <input class="form-check-input" type="checkbox" id="ban" name="actions" value="ban">
+              <label class="form-check-label" for="ban">Ban user</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="warn" name="actions" value="warn">
+              <label class="form-check-label" for="warn">Warn user</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="reports" name="actions" value="reports">
+              <label class="form-check-label" for="reports">Check reports for user</label>
+            </div>
+            </div>
+          <hr>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-size: 2rem;
+      color: #343a40;
+    }
+  </style>
+
+  <div class="container mt-5">
+    <div class="row justify-content-between">
+      <div class="col-md-3 text-center">
+        <a href="staff-only/reports"><i class="bi bi-flag"></i> View reports</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="warn"><i class="bi bi-exclamation-circle"></i> Warn user</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="all-users"><i class="bi bi-people"></i> View all users</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="ban-list"><i class="bi bi-hammer"></i> View ban list</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="staff-only/ban"><i class="bi bi-hat"></i> Ban station</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <a href="staff-only/unban"><i class="bi bi-block"></i> Unban station</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
